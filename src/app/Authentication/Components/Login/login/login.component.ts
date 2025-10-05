@@ -8,6 +8,7 @@ import { AuthResponse } from '../../../Models/Login/AuthResponse';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AuthRequest } from '../../../Models/Login/AuthRequest';
 
 @Component({
   selector: 'app-login',
@@ -45,7 +46,13 @@ export class LoginComponent {
 
      if (this.loginForm.invalid) return;
 
-    this._AuthServiceService.AuthenticateUser(this.loginForm.value)
+     const authRequest: AuthRequest = {
+    email: this.loginForm.get('username')?.value,
+    password: this.loginForm.get('password')?.value
+  };
+
+
+    this._AuthServiceService.AuthenticateUser(authRequest)
       .pipe(
         tap((res: BaseResponse<AuthResponse>) => {
           if (res.succeeded && res.responseData) {
