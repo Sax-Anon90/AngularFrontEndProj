@@ -1,1 +1,81 @@
-<p>login works!</p>
+<div class="login-wrapper">
+  <div class="login-box">
+    <h2>Welcome Back</h2>
+    <p class="subtitle">Sign in to continue</p>
+
+    <form [formGroup]="loginForm" (ngSubmit)="AuthenticateUser()">
+      <!-- Email -->
+      <div class="form-group">
+        <label for="username">Email</label>
+        <input
+          id="username"
+          type="email"
+          formControlName="username"
+          placeholder="example@domain.com"
+        />
+
+        <div
+          class="error"
+          *ngIf="
+            loginForm.get('username')?.touched &&
+            loginForm.get('username')?.hasError('required')
+          "
+        >
+          Email is required
+        </div>
+        <div
+          class="error"
+          *ngIf="
+            loginForm.get('username')?.touched &&
+            loginForm.get('username')?.hasError('email')
+          "
+        >
+          Enter a valid email address
+        </div>
+      </div>
+
+      <!-- Password -->
+      <div class="form-group">
+        <label for="password">Password</label>
+        <div class="password-container">
+          <input
+            [type]="hidePassword ? 'password' : 'text'"
+            id="password"
+            formControlName="password"
+            placeholder="Enter your password"
+          />
+          <button
+            type="button"
+            class="toggle-btn"
+            (click)="hidePassword = !hidePassword"
+          >
+            {{ hidePassword ? "Show" : "Hide" }}
+          </button>
+        </div>
+
+        <div
+          class="error"
+          *ngIf="
+            loginForm.get('password')?.touched &&
+            loginForm.get('password')?.hasError('required')
+          "
+        >
+          Password is required
+        </div>
+        <div
+          class="error"
+          *ngIf="
+            loginForm.get('password')?.touched &&
+            loginForm.get('password')?.hasError('pattern')
+          "
+        >
+          Must include upper, lower, number & special character
+        </div>
+      </div>
+
+      <button type="submit" [disabled]="loginForm.invalid" class="login-btn">
+        Sign In
+      </button>
+    </form>
+  </div>
+</div>
