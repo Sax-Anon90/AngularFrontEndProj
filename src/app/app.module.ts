@@ -7,6 +7,7 @@ import { LoginComponent } from './Authentication/Components/Login/login/login.co
 import { ReactiveFormsModule } from '@angular/forms';
 import { EmployeeComponent } from './Employees/Components/employee/employee.component';
 import { HttpClientModule } from '@angular/common/http';
+import { DxDataGridModule } from 'devextreme-angular';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-     HttpClientModule
+     HttpClientModule,
+     DxDataGridModule
   ],
   providers: [],
   bootstrap: [AppComponent]

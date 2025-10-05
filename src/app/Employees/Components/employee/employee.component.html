@@ -1,1 +1,19 @@
-<p>employee works!</p>
+<!-- src/app/Employees/Components/employee/employee.component.html -->
+<dx-data-grid
+  [dataSource]="employees"
+  [showBorders]="true"
+  [allowColumnReordering]="true"
+  [allowColumnResizing]="true"
+  [columnAutoWidth]="true"
+  [paging]="{ pageSize: 10 }"
+  [sorting]="{ mode: 'multiple' }"
+  [filterRow]="{ visible: true }"
+  [groupPanel]="{ visible: true }"
+  [export]="{ enabled: true, allowExportSelectedData: true }"
+>
+  <dxi-column dataField="firstName" caption="First Name"></dxi-column>
+  <dxi-column dataField="lastName" caption="Last Name"></dxi-column>
+  <dxi-column dataField="email" caption="Email"></dxi-column>
+  <dxi-column dataField="department" caption="Department"></dxi-column>
+  <dxi-column dataField="position" caption="Position"></dxi-column>
+</dx-data-grid>

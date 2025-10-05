@@ -15,6 +15,7 @@
     "experimentalDecorators": true,
     "moduleResolution": "bundler",
     "importHelpers": true,
+    // Removed custom "paths" mapping for "jszip" to use default TypeScript resolution.
     "target": "ES2022",
     "module": "ES2022"
   },
